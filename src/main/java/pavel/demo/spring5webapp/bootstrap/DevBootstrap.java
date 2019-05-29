@@ -17,13 +17,18 @@ import pavel.demo.spring5webapp.repositories.PublisherRepository;
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
 	// fields
-	@Autowired
 	private AuthorRepository authorRepository;
-	@Autowired
 	private BookRepository bookRepository;
-	@Autowired
 	private PublisherRepository publisherRepository;
 
+	// constructors
+	public DevBootstrap(AuthorRepository authorRepository,
+	                    BookRepository bookRepository,
+	                    PublisherRepository publisherRepository) {
+		this.authorRepository = authorRepository;
+		this.bookRepository = bookRepository;
+		this.publisherRepository = publisherRepository;
+	}
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
